@@ -5,6 +5,7 @@ import XyDialog from './components/Dialog'
 import XyStar from './components/Star'
 import XyMagnifier from './components/Magnifier'
 import XySelector from './components/Selector'
+import XySwitch from './components/Switch'
 
 import './assets/css/iconfont.css'
 
@@ -18,6 +19,7 @@ XyUI.install  = function (Vue){
     Vue.component(XyStar.name, XyStar)
     Vue.component(XyMagnifier.name, XyMagnifier)
     Vue.component(XySelector.name, XySelector)
+    Vue.component(XySwitch.name, XySwitch)
 }
 
 export default XyUI

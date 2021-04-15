@@ -82,7 +82,7 @@ export default {
            this.oMagWap.style.top = (e.pageY - this.imgY - this.magWapHeight/2) + 'px';
            this.oImgCopy.style.left = -(e.pageX - this.imgX - this.magWapWidth/2) + 'px';
            this.oImgCopy.style.top = -(e.pageY - this.imgY - this.magWapHeight/2) + 'px';
-           if(e.pageX < this.imgX || e.pageX > (this.imgX + this.imgWapWidth) || e.pageY < this.imgY || e.pageY > (this.imgY + this.imgWapHeight)){
+           if(e.pageX < this.imgX-2 || e.pageX > (this.imgX + this.imgWapWidth) || e.pageY < this.imgY || e.pageY > (this.imgY + this.imgWapHeight)){
                this.oMagWap.className = 'mag-wap'
            }
        },
@@ -112,7 +112,6 @@ export default {
         box-shadow: 0 0 5px #999;
         box-sizing: border-box;
         border-radius: 5px;
-        // overflow: hidden;
         .mag-wap{
             display: none;
             width: 100px;

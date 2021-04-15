@@ -79,6 +79,16 @@
 				@change="change"
 			></xy-selector>
 		</div>
+
+		<div class="switch-row">
+			<xy-switch
+				v-model="value"
+				@change="changeClick"
+				inActiveText="林允儿"
+				activeText="nene"
+			></xy-switch>
+		</div>
+
 		<p style="height: 500px">
 
 		</p>
@@ -99,7 +109,8 @@ export default {
 			btnGroupShow: true,
 			imgSrc: 'chengguo6.jpg',
 			selectData: selectData,
-			placeholder: '请做出你的选择'
+			placeholder: '请做出你的选择',
+			value: false
 		};
 	},
 	mounted() {},
@@ -116,10 +127,13 @@ export default {
 		changeVisible() {
 			this.dialogVisible = false;
 		},
-		getStarNum(num){
+		getStarNum(num) {
 			console.log(num);
 		},
-		change(value){
+		change(value) {
+			console.log(value);
+		},
+		changeClick(value) {
 			console.log(value);
 		}
 	},
@@ -151,6 +165,11 @@ export default {
 	margin: 20px auto;
 }
 .select-row{
+	width: 300px;
+	margin: 20px auto;
+	padding: 20px 0;
+}
+.switch-row{
 	width: 300px;
 	margin: 20px auto;
 	padding: 20px 0;

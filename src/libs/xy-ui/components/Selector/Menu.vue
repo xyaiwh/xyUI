@@ -1,5 +1,5 @@
 <template>
-      <div class="select-menu hide" :style="{height: finalMenuData.length*39 + 'px'}">
+      <div class="select-menu hide" :style="{height: finalMenuData.length > 0 ? finalMenuData.length*39 + 'px':'230px'}">
         <ul v-if="finalMenuData.length > 0">
             <li
                 v-for="(menuItem,index) of finalMenuData"
@@ -52,12 +52,15 @@ export default {
     .select-menu{
         display: none;
         position: absolute;
-        margin-top: 3px;
+        z-index: 3;
         width: 100%;
         height: 100%;
+        background-color: #fff;
+        box-sizing: border-box;
         ul{
             border: 1px solid #aaa;
             border-radius: 5px;
+            margin-top: 3px;
             li{
                 text-align:center;
                 padding: 10px 0;
