@@ -2,31 +2,51 @@
   <div
     :class="[
         'xy-switch',
-        isChecked ? 'isChecked':''
+        value ? 'isChecked':''
     ]"
   >
-      <span class="xy-switch-label switch-left" @click="changeIsChecked" v-if="inActiveText">{{inActiveText}}</span>
+      <span 
+        :class="[
+            'xy-switch-label',
+            'switch-left',
+            value ? '' : 'is-active'
+        ]" 
+        @click="changeIsChecked" 
+        v-if="inActiveText"
+      >{{inActiveText}}</span>
+
       <span 
         class="xy-switch-core-before" 
         @click="changeIsChecked"
         :style="{
-            backgroundColor: isChecked ? activeColor : inactiveColor
+            backgroundColor: value ? activeColor : inActiveColor
         }"
       ></span>
-      <span class="xy-switch-label switch-right" @click="changeIsChecked" v-if="activeText">{{activeText}}</span>
+      <span 
+        :class="[
+            'xy-switch-label',
+            'switch-right',
+            value ? 'is-active' : ''
+        ]" 
+        @click="changeIsChecked" 
+        v-if="activeText"
+      >{{activeText}}</span>
   </div>
 </template>
 
 <script>
 export default {
     name: 'xySwitch',
-
     props: {
+        value: {
+            type: Boolean,
+            default: false
+        },
         activeColor: {
             type: String,
             default: '#409eff'
         },
-        inactiveColor: {
+        inActiveColor: {
             type: String,
             default: '#dcdfe6'
         },
@@ -41,14 +61,11 @@ export default {
     },
 
     data() {
-        return {
-            isChecked: false
-        }
+        return {}
     },
 
     mounted(){
-        this.isChecked = this.$vnode.data.attrs.value;
-        this.changeStatus(this.isChecked);
+        console.log(this);
         this.$nextTick(()=>{
             this.$el.querySelector('.xy-switch-core-before').className = 'xy-switch-core';
         })
@@ -56,21 +73,9 @@ export default {
 
     methods: {
         changeIsChecked(){
-            this.isChecked = !this.isChecked;
-            this.changeStatus(this.isChecked)
-            this.$emit('change', this.isChecked);
+            this.$emit('input', !this.value);
+            this.$emit('change', !this.value);
         },
-        changeStatus (isChecked){
-            let labelLeft = this.$el.querySelector('.switch-left'),
-                labelRight = this.$el.querySelector('.switch-right');
-            if(isChecked){
-                if(this.activeText) labelRight.className += ' is-active';
-                if(this.inActiveText) labelLeft.className = 'xy-switch-label switch-left';
-            }else{
-                if(this.activeText) labelRight.className = 'xy-switch-label switch-right'
-                if(this.inActiveText) labelLeft.className += ' is-active';   
-            }
-        }
     }
     
 }

@@ -1,11 +1,16 @@
 <template>
   <div class="selectInput">
-      <label class="placeholder">{{placeholder}}</label>
+      <label 
+        class="placeholder" 
+        :style="{
+          display: inputValue ? 'none' : 'block'
+        }"
+      >{{placeholder}}</label>
       <input 
         type="text" 
         class="input" 
         @input="searchOptions"
-        v-model="inputValue" 
+        :value="inputValue"
       >
       <span class="iconfont icon-down"></span>
   </div>
@@ -15,7 +20,17 @@
 export default {
   name: 'xyInput',
   props: {
-    placeholder: String
+    placeholder: String,
+    value: {
+      type: String,
+      default: ''
+    },
+    menuData: {
+      type: Array,
+      default(){
+        return []
+      }
+    }
   },
   data() {
     return {
@@ -23,6 +38,7 @@ export default {
     }
   },
   mounted() {
+    this.inputValue = this.menuData.filter(item => item.value === this.value)[0] ? this.menuData.filter(item => item.value === this.value)[0].text : this.value;
     this.init()
   },
   methods: {

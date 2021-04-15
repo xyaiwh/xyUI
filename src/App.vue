@@ -73,10 +73,11 @@
 			</xy-magnifier>
 		</div>
 		<div class="select-row">
-			<xy-selector 
+			<xy-selector
+				v-model="selectValue"
 				:selectData="selectData"
 				:placeholder="placeholder"
-				@change="change"
+				@change="selectClick"
 			></xy-selector>
 		</div>
 
@@ -84,6 +85,14 @@
 			<xy-switch
 				v-model="value"
 				@change="changeClick"
+				inActiveText="林允儿"
+				activeText="nene"
+			></xy-switch>
+			<xy-switch
+				v-model="value"
+				@change="changeClick"
+				activeColor='green'
+				inActiveColor='red'
 				inActiveText="林允儿"
 				activeText="nene"
 			></xy-switch>
@@ -110,7 +119,8 @@ export default {
 			imgSrc: 'chengguo6.jpg',
 			selectData: selectData,
 			placeholder: '请做出你的选择',
-			value: false
+			value: true,
+			selectValue: 'java'
 		};
 	},
 	mounted() {},
@@ -130,8 +140,8 @@ export default {
 		getStarNum(num) {
 			console.log(num);
 		},
-		change(value) {
-			console.log(value);
+		selectClick(value) {
+			console.log(value,this.selectValue);
 		},
 		changeClick(value) {
 			console.log(value);

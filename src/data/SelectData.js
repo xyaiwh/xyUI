@@ -22,7 +22,7 @@ export default [
     {
         id: 5,
         text: 'JAVA语言',
-        value: 'react'
+        value: 'java'
     },
     {
         id: 6,
