@@ -1,5 +1,9 @@
 <template>
 	<div id="app">
+		11111
+		2222
+		3333
+		4444
 		<div class="xy-ui-button">
 			<div class="btn-row">
 				<xy-button>默认按钮</xy-button>
