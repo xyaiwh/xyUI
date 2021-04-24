@@ -5,6 +5,8 @@
 		3333
 		4444
 		<div class="xy-ui-button">
+			55555
+			66666
 			<div class="btn-row">
 				<xy-button>默认按钮</xy-button>
 				<xy-button btnStyle="primary">主要按钮</xy-button>
